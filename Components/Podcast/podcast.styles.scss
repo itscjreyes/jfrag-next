@@ -1,0 +1,25 @@
+.podcast-container {
+    .badges-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+
+        a {
+            display: block;
+            height: 45px;
+            margin: 5px;
+
+            img {
+                width: auto;
+                height: 100%;
+            }
+        }
+    }
+
+    iframe {
+        border: none;
+        height: 360px;
+    }
+}

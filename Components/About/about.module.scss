@@ -1,0 +1,38 @@
+.about {
+  position: relative;
+  z-index: 1;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 150px;
+  }
+
+  .contentWrapper {
+    width: 50%;
+  }
+
+  .imgWrapper {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .about {
+    .container {
+      flex-direction: column;
+      padding-top: 100px;
+    }
+
+    .contentWrapper {
+      width: 100%;
+    }
+
+    .imgWrapper {
+      margin: 0 auto 50px;
+      max-width: 500px;
+      width: 80%;
+    }
+  }
+}

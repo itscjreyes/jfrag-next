@@ -1,0 +1,53 @@
+.instagram-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 50%;
+
+  a {
+    display: block;
+    width: calc(100% / 3 - 10px);
+    margin: 5px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+
+    &.fade:not(.active) {
+      opacity: 0.5;
+      filter: grayscale(0.7);
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+
+    img {
+      transition: transform 2s linear;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .instagram-wrapper {
+    a {
+      width: calc(50% - 10px);
+
+      &:nth-child(n+7) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .instagram-wrapper {
+    width: calc(100% + 20px);
+    margin: 50px -10px 0;
+
+    a:nth-child(n+5) {
+      display: none;
+    }
+  }
+}

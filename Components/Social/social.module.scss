@@ -1,0 +1,69 @@
+.socialGroup {
+  margin: 20px -8px;
+
+  a {
+    display: inline-block;
+    margin: 8px;
+    color: inherit;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-3px);
+    }
+
+    &.iconInstagram {
+      &:hover,
+      &:focus {
+        img {
+          filter: invert(28%) sepia(98%) saturate(1828%) hue-rotate(267deg) brightness(75%) contrast(98%);
+        }
+      }
+    }
+
+    &.iconLinkedin {
+      &:hover,
+      &:focus {
+        img {
+          filter: invert(22%) sepia(84%) saturate(5557%) hue-rotate(188deg) brightness(97%) contrast(101%);
+        }
+      }
+    }
+
+    &.iconTwitter {
+      &:hover,
+      &:focus {
+        img {
+          filter: invert(50%) sepia(80%) saturate(2425%) hue-rotate(163deg) brightness(98%) contrast(101%);
+        }
+      }
+    }
+
+    &.iconYoutube {
+      &:hover,
+      &:focus {
+        img {
+          filter: invert(19%) sepia(92%) saturate(7259%) hue-rotate(359deg) brightness(98%) contrast(107%);
+        }
+      }
+    }
+  }
+
+  img {
+    height: 25px;
+
+    path {
+      transition: all 0.05s ease;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .socialGroup {
+    margin: 15px -8px;
+
+    img {
+      height: 20px;
+    }
+  }
+}

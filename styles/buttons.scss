@@ -1,0 +1,50 @@
+.center-btn {
+  text-align: center;
+}
+
+a.btn {
+  color: inherit;
+}
+
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 15px 35px 13px;
+  margin-top: 20px;
+  font-size: 22px;
+  text-align: center;
+  outline: 0;
+  border-radius: 2px;
+  font-family: 'Bebas Neue', cursive;
+  transition: all 0.2s ease;
+
+  &.btn-cta {
+    background: #3A3A3A;
+    color: white;
+    border: 0;
+
+    &:hover,
+    &:focus {
+      background: #515151;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+  }
+
+  &.btn-hollow {
+    border: 1px solid;
+    background: transparent;
+
+    &:hover,
+    &:focus {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+  }
+}

@@ -1,0 +1,49 @@
+.contact-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 40px;
+
+  .content-wrapper {
+    width: 40%;
+  }
+}
+
+.email-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  svg {
+    height: 20px;
+  }
+
+  a {
+    margin-left: 10px;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .contact-wrapper {
+    flex-direction: column;
+
+    .content-wrapper {
+      width: 100%;
+    }
+  }
+
+  .contact {
+    form {
+      h3 {
+        font-size: 18px;
+      }
+    }
+  }
+}

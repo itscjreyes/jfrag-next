@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Lato&display=swap');
+
+$font-title: 'Bebas Neue', cursive;
+$font-body: 'Lato', sans-serif;
+
+$grey: #3A3A3A;
+$black: #1F1F1F;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-body;
+  color: $black;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $font-title;
+  margin: 0;
+  line-height: 1.4;
+}
+
+h2 {
+  font-size: 70px;
+}
+
+p,
+li {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  padding: 80px 8%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+#about,
+#media,
+#contact {
+  outline: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 50px 6%;
+  }
+
+  h1,
+  h2 {
+    letter-spacing: -1px;
+  }
+  
+  h2 {
+    font-size: 50px;
+  }
+}
