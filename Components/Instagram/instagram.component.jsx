@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import 'lazysizes';
 
 class Instagram extends Component {
   constructor() {
@@ -14,8 +15,6 @@ class Instagram extends Component {
     let data = []
     const url = "https://www.instagram.com/jessefragale/"
     const instaSource = await axios.get(url)
-    console.log('hello')
-    console.log(instaSource)
 
     const instaObj = instaSource.data
       .match(
@@ -61,6 +60,7 @@ class Instagram extends Component {
           <img
             src={media.thumbnail_src}
             alt={media.edge_media_to_caption.edges[0].node.text}
+            className="lazyload no-transform"
           />
         </a>
       )

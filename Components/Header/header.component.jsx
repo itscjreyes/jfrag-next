@@ -53,7 +53,7 @@ class Header extends Component {
             <ul className="menu">
               <li className="menu-item"><Link href="/#about"><a className="menu-button">About</a></Link></li>
               <li className="menu-item"><Link href="/#media"><a className="menu-button">Media</a></Link></li>
-              <li className="menu-item"><Link href="/episodes"><a className="menu-button">Episodes</a></Link></li>
+              <li className="menu-item"><Link href="/podcast"><a className="menu-button">Podcast</a></Link></li>
               <li className="menu-item"><Link href="/#contact"><a className="menu-button">Contact</a></Link></li>
             </ul>
           </nav>

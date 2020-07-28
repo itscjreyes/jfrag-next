@@ -1,5 +1,5 @@
-import React from 'react';
 import Social from '../Social/social.component';
+import 'lazysizes';
 
 function Banner(){
   return (
@@ -11,7 +11,7 @@ function Banner(){
           <Social />
         </div>
         <div className="img-wrapper">
-          <img src="jesse-fragale.png" alt="Jesse Fragale"/>
+          <img className="lazyload" src="jesse-fragale.png" alt="Jesse Fragale"/>
         </div>
       </div>
     </div>

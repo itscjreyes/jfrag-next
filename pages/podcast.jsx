@@ -1,18 +1,22 @@
 import React, {Component} from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import Header from '../Components/Header/header.component';
 import Butter from 'buttercms';
 
 const butter = Butter('dd5f93783ecbf44f198312ed30708c645ae7b0ff');
 
-class Episodes extends Component {
+class Podcast extends Component {
   static async getInitialProps() {
-    const res = await butter.page.retrieve('*', 'homepage')  
+    const res = await butter.page.list('episode')  
     return res.data;
   }
 
   render(){
+    const eps = this.props.data;
+    console.log(eps)
+    
     return (
       <div className="episode-page">
         <Head>
@@ -21,11 +25,16 @@ class Episodes extends Component {
         </Head>
         <Header />
         <div className="container">
-          <h1>Episodes</h1>
+          <h1><strong>Working Capital</strong> The Real Estate Podcast</h1>
+            {
+              eps.map((ep, i) => (
+                <Link href={`/podcast/${ep.slug}`} key={i}><a>{ep.name}</a></Link>
+              ))
+            }
         </div>
       </div>
     )
   }
 }
 
-export default Episodes;
+export default Podcast;

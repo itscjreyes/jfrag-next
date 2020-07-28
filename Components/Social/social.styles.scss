@@ -1,4 +1,4 @@
-.socialGroup {
+.social-group {
   margin: 20px -8px;
 
   a {
@@ -12,7 +12,7 @@
       transform: translateY(-3px);
     }
 
-    &.iconInstagram {
+    &.icon-instagram {
       &:hover,
       &:focus {
         img {
@@ -21,7 +21,7 @@
       }
     }
 
-    &.iconLinkedin {
+    &.icon-linkedin {
       &:hover,
       &:focus {
         img {
@@ -30,7 +30,7 @@
       }
     }
 
-    &.iconTwitter {
+    &.icon-twitter {
       &:hover,
       &:focus {
         img {
@@ -39,7 +39,7 @@
       }
     }
 
-    &.iconYoutube {
+    &.icon-youtube {
       &:hover,
       &:focus {
         img {

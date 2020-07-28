@@ -51,6 +51,22 @@ button {
   margin: auto;
 }
 
+.lazyload,
+.lazyloading {
+  opacity: 0;
+  transform: translateY(30px);
+
+  &.no-transform {
+    transform: translateY(0);
+  }
+}
+
+.lazyloaded {
+  opacity: 1;
+  transform: translateY(0px);
+	transition: all 400ms;
+}
+
 #about,
 #media,
 #contact {
@@ -75,6 +91,7 @@ button {
 @import './buttons.scss';
 
 @import '../Components/Header/header.styles.scss';
+@import '../Components/Social/social.styles.scss';
 @import '../Components/Banner/banner.styles.scss';
 @import '../Components/About/about.styles.scss';
 @import '../Components/Media/media.styles.scss';

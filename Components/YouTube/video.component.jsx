@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ModalVideo from 'react-modal-video';
+import 'lazysizes';
 
 class Video extends Component {
   constructor () {
@@ -20,7 +21,7 @@ class Video extends Component {
     }
 
     return (
-      <div className="video-wrapper" style={wrapperStyles}>
+      <div className="video-wrapper lazyload" style={wrapperStyles}>
         <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId={this.props.vidId} onClose={() => this.setState({isOpen: false})} />
         <button className="open-video" onClick={this.openModal} title={this.props.vidTitle}>
           <div className="play">

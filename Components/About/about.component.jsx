@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import 'lazysizes';
 
 function About({image, content}) {
   return (
     <div className="about" id="about">
       <div className="container">
         <div className="img-wrapper">
-          <img src={image} alt="Jesse Fragale"/>
+          <img src={image} className="lazyload" alt="Jesse Fragale"/>
         </div>
         <div className="content-wrapper">
           <h2>About Me</h2>

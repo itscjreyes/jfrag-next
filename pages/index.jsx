@@ -27,7 +27,7 @@ class Home extends Component {
     return (
       <div>
         <Head>
-          <title>Home</title>
+          <title>Jesse Fragale | Real Estate Investor</title>
           <link rel="icon" href="/favicon.png" />
         </Head>
 
