@@ -1,9 +1,5 @@
-import React from 'react';
-
-import '../Articles/articles.styles.scss';
-
-const Featured = ({ key, logo, title, description, link, linkText }) => (
-  <div className="article" key={key}>
+const Featured = ({ logo, title, description, link, linkText }) => (
+  <div className="article">
     <div className="content-wrapper">
       <img src={logo} alt={title} />
       <h3>{title}</h3>

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import './instagram.styles.scss';
-
 class Instagram extends Component {
   constructor() {
     super();

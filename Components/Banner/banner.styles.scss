@@ -23,7 +23,7 @@
     padding-bottom: 275px;
   }
 
-  .contentWrapper {
+  .content-wrapper {
     position: relative;
     width: 35%;
     text-align: right;
@@ -32,7 +32,7 @@
     z-index: 1;
   }
 
-  .imgWrapper {
+  .img-wrapper {
     position: absolute;
     bottom: 0;
     right: 10%;
@@ -51,11 +51,11 @@
 
 @media screen and (max-width: 1100px) {
   .banner {
-    .contentWrapper {
+    .content-wrapper {
       width: 40%;
     }
 
-    .imgWrapper {
+    .img-wrapper {
       right: 0;
     }
   }
@@ -63,12 +63,12 @@
 
 @media screen and (max-width: 950px) {
   .banner {
-    .contentWrapper {
+    .content-wrapper {
       text-align: left;
       width: 100%;
     }
 
-    .imgWrapper {
+    .img-wrapper {
       width: 70%;
     }
   }
@@ -90,7 +90,7 @@
       font-size: 26px;
     }
 
-    .imgWrapper {
+    .img-wrapper {
       right: -10%;
     }
   }

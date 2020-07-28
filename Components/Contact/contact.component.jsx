@@ -1,10 +1,6 @@
-import React from 'react';
-import { ReactComponent as Envelope } from '../../Assets/icons/envelope.svg';
 import Social from '../Social/social.component';
-import Instagram from '../Instagram/instagram.component';
 import Form from '../Form/form.component';
-
-import './contact.styles.scss';
+import Instagram from '../Instagram/instagram.component';
 
 function Contact() {
   return (
@@ -14,7 +10,7 @@ function Contact() {
         <div className="contact-wrapper">
           <div className="content-wrapper">
             <div className="email-wrapper">
-              <Envelope />
+              <img src="/envelope.svg" alt="Email Jesse Fragale"/>
               <a href="mailto:jesse@theworkingcapitalpodcast.com">jesse@theworkingcapitalpodcast.com</a>
             </div>
             <Social />

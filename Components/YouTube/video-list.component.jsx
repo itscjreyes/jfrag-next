@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Video from './video.component';
 
-import './video-list.styles.scss';
-
-const key = process.env.REACT_APP_GOOGLE_API_KEY;
+const key = 'AIzaSyA280iCCsiwkxIwW8D9MgjYrYQHKZPVPks';
 const channelID = 'UCNrawkC_bE67IG8SaJpQMgw';
 
 class VideoList extends Component {
@@ -36,18 +34,20 @@ class VideoList extends Component {
   render() {
     return (
       <div className="videos-container">
-        <div className="videos-group">
-          {
-            this.state.videos.map((vid, i) => (
-              <Video 
-                key={i}
-                vidId={vid.id.videoId}
-                vidTitle={vid.snippet.title}
-                vidImg={vid.snippet.thumbnails.high.url}
-              />
-            ))
-          }
-        </div>
+        { this.state.videos &&
+          <div className="videos-group">
+            {
+              this.state.videos.map((vid, i) => (
+                <Video 
+                  key={i}
+                  vidId={vid.id.videoId}
+                  vidTitle={vid.snippet.title}
+                  vidImg={vid.snippet.thumbnails.high.url}
+                />
+              ))
+            }
+          </div>
+        }
         <div className="center-btn">
           <a href="https://www.youtube.com/user/JesseFragale/videos" target="_blank" rel="noopener noreferrer" className="btn btn-hollow">View All</a>
         </div>

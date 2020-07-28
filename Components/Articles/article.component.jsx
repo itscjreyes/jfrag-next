@@ -1,7 +1,5 @@
-import React from 'react';
-
-const Article = ({ key, title, description, link }) => (
-  <div className="article" key={key}>
+const Article = ({ title, description, link }) => (
+  <div className="article">
     <div className="content-wrapper">
       <h3>{title}</h3>
       <p>{description}</p>

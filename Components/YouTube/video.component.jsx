@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ModalVideo from 'react-modal-video';
-import { ReactComponent as Play } from '../../Assets/icons/play.svg';
-import './video.styles.scss';
 
 class Video extends Component {
   constructor () {
@@ -22,11 +20,11 @@ class Video extends Component {
     }
 
     return (
-      <div className="video-wrapper" key={this.props.key} style={wrapperStyles}>
+      <div className="video-wrapper" style={wrapperStyles}>
         <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId={this.props.vidId} onClose={() => this.setState({isOpen: false})} />
         <button className="open-video" onClick={this.openModal} title={this.props.vidTitle}>
           <div className="play">
-            <Play />
+            <img src="/play.svg" aria-hidden="true"/>
           </div>
         </button>
       </div>

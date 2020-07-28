@@ -1,6 +1,3 @@
-import React from 'react';
-
-import './articles-list.styles.scss';
 import Article from './article.component';
 
 function ArticlesList({articles}) {

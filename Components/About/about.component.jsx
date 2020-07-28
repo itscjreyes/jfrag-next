@@ -1,18 +1,16 @@
-import React from 'react';
-
-import styles from './about.module.scss';
+import Link from 'next/link';
 
 function About({image, content}) {
   return (
-    <div className={styles.about} id="about">
-      <div className={`container ${styles.container}`}>
-        <div className={styles.imgWrapper}>
+    <div className="about" id="about">
+      <div className="container">
+        <div className="img-wrapper">
           <img src={image} alt="Jesse Fragale"/>
         </div>
-        <div className={styles.contentWrapper}>
+        <div className="content-wrapper">
           <h2>About Me</h2>
           <div dangerouslySetInnerHTML={{ __html: content }} />
-          <button href="#contact" className="scroll btn btn-cta">Let's Connect</button>
+          <Link href="#contact"><a className="btn btn-cta">Let's Connect</a></Link>
         </div>
       </div>
     </div>

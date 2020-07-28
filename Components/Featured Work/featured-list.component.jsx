@@ -1,6 +1,3 @@
-import React from 'react';
-
-import '../Articles/articles-list.styles.scss';
 import Featured from './featured.component';
 
 function FeaturedList({featured}) {

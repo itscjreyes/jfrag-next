@@ -71,3 +71,19 @@ button {
     font-size: 50px;
   }
 }
+
+@import './buttons.scss';
+
+@import '../Components/Header/header.styles.scss';
+@import '../Components/Banner/banner.styles.scss';
+@import '../Components/About/about.styles.scss';
+@import '../Components/Media/media.styles.scss';
+@import '../Components/YouTube/video-list.styles.scss';
+@import '../Components/YouTube/video.styles.scss';
+@import '../Components/Podcast/podcast.styles.scss';
+@import '../Components/Articles/articles-list.styles.scss';
+@import '../Components/Articles/articles.styles.scss';
+@import '../Components/Contact/contact.styles.scss';
+@import '../Components/Form/form.styles.scss';
+@import '../Components/Instagram/instagram.styles.scss';
+@import '../Components/Footer/footer.styles.scss';

@@ -5,13 +5,16 @@ import Head from 'next/head';
 import Header from '../Components/Header/header.component';
 import Banner from '../Components/Banner/banner.component';
 import About from '../Components/About/about.component';
+import Media from '../Components/Media/media.component';
+import Contact from '../Components/Contact/contact.component';
+import Footer from '../Components/Footer/footer.component';
 
 const butter = Butter('dd5f93783ecbf44f198312ed30708c645ae7b0ff');
 
 class Home extends Component {
   static async getInitialProps() {
-    const resp = await butter.page.retrieve('*', 'homepage')  
-    return resp.data;
+    const res = await butter.page.retrieve('*', 'homepage')  
+    return res.data;
   }
 
   render(){
@@ -34,6 +37,12 @@ class Home extends Component {
           image={about_img}
           content={about}
         />
+        <Media
+          articles={articles}
+          featured={featured}
+        />
+        <Contact />
+        <Footer />
       </div>
     )
   }

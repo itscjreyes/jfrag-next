@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
-import './form.styles.scss';
-
 class Form extends Component {
   constructor(props) {
     super(props);
