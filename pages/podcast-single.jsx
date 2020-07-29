@@ -18,6 +18,7 @@ export default class extends Component {
       <div>
         <Head>
           <title>{ep.name} | Jesse Fragale</title>
+          <link rel="icon" href="/favicon.png" />
           <meta name="description" content={metadescription}></meta>
         </Head>
         <Header/>

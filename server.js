@@ -20,7 +20,6 @@ app.prepare().then(() => {
       query.slug = splitPath[2];
       
       app.render(req, res, '/podcast-single', query)
-      console.log(query.slug)
     } else {
       handle(req, res, parsedUrl)
     }
