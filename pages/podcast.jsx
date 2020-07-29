@@ -15,7 +15,6 @@ class Podcast extends Component {
 
   render(){
     const eps = this.props.data;
-    console.log(eps)
     
     return (
       <div className="episode-page">
@@ -28,7 +27,9 @@ class Podcast extends Component {
           <h1><strong>Working Capital</strong> The Real Estate Podcast</h1>
             {
               eps.map((ep, i) => (
-                <Link href={`/podcast/${ep.slug}`} key={i}><a>{ep.name}</a></Link>
+                <div>
+                  <Link href={`/podcast/${ep.slug}`} key={i}><a>{ep.name}</a></Link>
+                </div>
               ))
             }
         </div>
