@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import VideoList from '../YouTube/video-list.component';
 import Podcast from '../Podcast/podcast.component';
 import ArticlesList from  '../Articles/articles-list.component';
-import FeaturedList from '../Featured Work/featured-list.component';
+import FeaturedList from '../Featured-Work/featured-list.component';
 
 class Media extends Component {
   tabsMap = () => {

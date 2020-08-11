@@ -1,0 +1,17 @@
+.badges-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    a {
+        display: block;
+        height: 45px;
+        margin: 5px;
+
+        img {
+            width: auto;
+            height: 100%;
+        }
+    }
+}

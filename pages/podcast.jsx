@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 
 import Header from '../Components/Header/header.component';
 import Butter from 'buttercms';
+import PodcastBanner from '../Components/Podcast-Banner/podcast-banner.component';
+import PodcastEpisodes from '../Components/Podcast-Episodes/podcast-episodes.component';
+import Footer from '../Components/Footer/footer.component';
 
 const butter = Butter('dd5f93783ecbf44f198312ed30708c645ae7b0ff');
 
@@ -23,16 +25,11 @@ class Podcast extends Component {
           <link rel="icon" href="/favicon.png" />
         </Head>
         <Header />
-        <div className="container">
-          <h1><strong>Working Capital</strong> The Real Estate Podcast</h1>
-            {
-              eps.map((ep, i) => (
-                <div>
-                  <Link href={`/podcast/${ep.slug}`} key={i}><a>{ep.name}</a></Link>
-                </div>
-              ))
-            }
-        </div>
+        <PodcastBanner />
+        <PodcastEpisodes
+          eps={eps}
+        />
+        <Footer />
       </div>
     )
   }
