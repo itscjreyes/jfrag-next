@@ -24,6 +24,12 @@
 
 @media screen and (max-width: 767px) {
     .title {
+        h1 {
+            font-weight: normal;
+            word-spacing: 1px;
+            letter-spacing: 1px;
+        }
+
         h2 {
             font-size: 28px;
         }

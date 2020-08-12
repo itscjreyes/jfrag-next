@@ -22,7 +22,7 @@ class Podcast extends Component {
       <div className="episode-page">
         <Head>
           <title>The Working Capital Real Estate Podcast Episodes | Jesse Fragale</title>
-          <link rel="icon" href="/favicon.png" />
+          <link rel="icon" href="/Favicon.png" />
         </Head>
         <Header />
         <PodcastBanner />

@@ -28,7 +28,7 @@ class Home extends Component {
       <div>
         <Head>
           <title>Jesse Fragale | Real Estate Investor</title>
-          <link rel="icon" href="/favicon.png" />
+          <link rel="icon" href="/Favicon.png" />
         </Head>
 
         <Header />

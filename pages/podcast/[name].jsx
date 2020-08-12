@@ -16,7 +16,7 @@ const Episode = ({ data }) => {
         <div className="episode-page">
             <Head>
                 <title>{ep.name} | The Working Capital Real Estate Podcast | Jesse Fragale</title>
-                <link rel="icon" href="/favicon.png" />
+                <link rel="icon" href="/Favicon.png" />
                 <meta name="description" content={metadescription}></meta>
             </Head>
             <Header/>
