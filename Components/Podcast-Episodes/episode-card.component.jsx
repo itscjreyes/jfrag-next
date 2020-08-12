@@ -1,7 +1,14 @@
 import Link from 'next/link';
 
 export const EpisodeCard = ({ep}) => {
-    const desc = ep.fields.description.replace('<p>','').substring(0,300);
+    const [width, setWidth] = React.useState(0);
+    React.useEffect(() => {
+        setWidth(window.innerWidth);
+    });
+
+    const wordCount = width > 767 ? 300 : 200;
+
+    const desc = ep.fields.description.replace('<p>','').substring(0,wordCount);
     const day = ep.fields.date.substring(8,10);
     const monthNum = ep.fields.date.substring(5,7);
     const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];

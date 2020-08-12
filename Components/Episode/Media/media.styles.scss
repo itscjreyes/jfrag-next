@@ -1,0 +1,13 @@
+.ep-media {
+    position: sticky;
+    top: 100px;
+    width: 35%;
+}
+
+@media screen and (max-width: 767px) {
+    .ep-media {
+        position: relative;
+        top: 0;
+        width: 100%;
+    }
+}

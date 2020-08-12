@@ -21,7 +21,7 @@ class Podcast extends Component {
     return (
       <div className="episode-page">
         <Head>
-          <title>Podcast Episodes | Jesse Fragale</title>
+          <title>The Working Capital Real Estate Podcast Episodes | Jesse Fragale</title>
           <link rel="icon" href="/favicon.png" />
         </Head>
         <Header />

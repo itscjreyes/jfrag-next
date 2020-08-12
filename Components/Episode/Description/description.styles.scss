@@ -1,0 +1,29 @@
+.ep-desc {
+    width: 60%;
+
+    p, span, li, td {
+        font-size: 16px; 
+    }
+
+    > div > *:first-child {
+        margin-top: 0;
+    }
+
+    a {
+        color: #337ab7;
+    }
+
+    .transcript-heading {
+        margin: 60px 0 30px;
+        background: #DEE8F1;
+        font-size: 24px;
+        padding: 10px 10px 5px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .ep-desc {
+        width: 100%;
+        margin-top: 40px;
+    }
+}

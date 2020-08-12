@@ -1,6 +1,11 @@
 import Butter from 'buttercms';
 import Head from 'next/head';
 import Header from '../../Components/Header/header.component';
+import Footer from '../../Components/Footer/footer.component';
+import { Back } from '../../Components/Episode/Back/back.component';
+import { Title } from '../../Components/Episode/Title/title.component';
+import { EpMedia } from '../../Components/Episode/Media/media.component';
+import { EpDesc } from '../../Components/Episode/Description/description.component';
 const butter = Butter('dd5f93783ecbf44f198312ed30708c645ae7b0ff');
 
 const Episode = ({ data }) => {
@@ -8,19 +13,31 @@ const Episode = ({ data }) => {
     const { metadescription, description, libsyn_episode_embed_code: embed, transcript } = ep.fields;
     
     return (
-        <div>
+        <div className="episode-page">
             <Head>
-                <title>{ep.name} | Jesse Fragale</title>
+                <title>{ep.name} | The Working Capital Real Estate Podcast | Jesse Fragale</title>
                 <link rel="icon" href="/favicon.png" />
                 <meta name="description" content={metadescription}></meta>
             </Head>
             <Header/>
-            <div className="container">
-                <h1>{ep.name}</h1>
-                <div dangerouslySetInnerHTML={{ __html: embed }} />
-                <div dangerouslySetInnerHTML={{ __html: description }} />
-                <div dangerouslySetInnerHTML={{ __html: transcript }} />
+            <Back pos="top" />
+            <Title 
+                name={ep.name}
+                date={ep.fields.date}
+            />
+            <div className="content-wrapper">
+                <div className="container">
+                    <EpMedia 
+                        embed={embed}
+                    />
+                    <EpDesc
+                        description={description}
+                        transcript={transcript}
+                    />
+                </div>
             </div>
+            <Back pos="bottom" />
+            <Footer />
         </div>
     )
 }
