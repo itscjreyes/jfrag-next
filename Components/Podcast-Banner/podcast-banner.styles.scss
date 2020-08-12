@@ -44,18 +44,20 @@
         .container {
             display: block;
             padding-top: 100px;
+            padding-bottom: 20px;
         }
 
         .img-wrapper {
-            width: 200px;
+            width: 250px;
             margin: auto;
         }
 
         .content-wrapper {
-            margin: 40px 0 0;
+            margin: 30px 0 0;
         }
 
         h1 {
+            text-align: center;
             font-size: 36px;
 
             .lg {
@@ -65,6 +67,7 @@
 
         .badges-wrapper {
             margin-top: 20px;
+            justify-content: center;
         }
     }
 }
