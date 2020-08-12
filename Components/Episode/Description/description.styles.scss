@@ -5,19 +5,19 @@
         font-size: 16px; 
     }
 
-    > div > *:first-child {
-        margin-top: 0;
-    }
-
     a {
         color: #337ab7;
     }
 
-    .transcript-heading {
-        margin: 60px 0 30px;
+    .section-heading {
+        margin-bottom: 30px;
         background: #DEE8F1;
         font-size: 24px;
         padding: 10px 10px 5px;
+    }
+
+    .transcript {
+        margin-top: 60px;
     }
 }
 
