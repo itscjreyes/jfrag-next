@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { EpisodeCard } from "./episode-card.component";
 
 function PodcastEpisodes({eps}) {
-    const [size, setSize] = useState(10);
+    const [size, setSize] = useState(5);
 
     const orderedEps = eps.sort((a, b) => parseFloat(b.fields.date.substring(0,10).replace(/-/g,'')) - parseFloat(a.fields.date.substring(0,10).replace(/-/g,'')));
 
@@ -23,7 +23,7 @@ function PodcastEpisodes({eps}) {
                 {
                     size < orderedEps.length &&
                     <div className="btn-center">
-                        <button className="btn btn-hollow" onClick={() => setSize(size + 10)}>Load More</button>
+                        <button className="btn btn-hollow" onClick={() => setSize(size + 5)}>Load More</button>
                     </div>
                 }
             </div>

@@ -8,7 +8,7 @@ export const EpisodeCard = ({ep}) => {
 
     const wordCount = width > 767 ? 300 : 200;
 
-    const desc = ep.fields.description.replace('<p>','').substring(0,wordCount);
+    const desc = htmlDecode(ep.fields.description).substring(0,wordCount);
     const day = ep.fields.date.substring(8,10);
     const monthNum = ep.fields.date.substring(5,7);
     const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -22,6 +22,8 @@ export const EpisodeCard = ({ep}) => {
                     .replace(/&#8220;/g, "“")
                     .replace(/&#8221;/g, "”")
                     .replace(/&amp;/g, "&")
+                    .replace(/&nbsp;/g, " ")
+                    .replace(/(<([^>]+)>)/gi, "")
     }
 
     return (
@@ -33,7 +35,7 @@ export const EpisodeCard = ({ep}) => {
                 </div>
                 <div className="ep-content">
                     <h3 className="ep-title"><span className="play-icon"><img src="/play.svg" aria-hidden="true"/></span>{ep.name}</h3>
-                    <p>{htmlDecode(desc)}...</p>
+                    <p>{desc}...</p>
                 </div>
             </a>
         </Link>
