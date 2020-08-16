@@ -10,7 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
 import TextField from '@material-ui/core/TextField';
-import SimpleMDE from 'react-simplemde-editor';
+import dynamic from 'next/dynamic';
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const useStyles = makeStyles(() => ({
     appBar: {
@@ -35,7 +36,8 @@ const AdminForm = props => {
     const [date, setDate] = useState(props.date);  
     const [embed, setEmbed] = useState(props.embed);  
     const [transcript, setTranscript] = useState(props.transcript);  
-    const [meta, setMeta] = useState(props.meta);  
+    const [meta, setMeta] = useState(props.meta);
+    const [value, setValue] = useState('');
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -54,12 +56,12 @@ const AdminForm = props => {
         }
     }
 
-    const handleDescription = value => {
-        setDescription(value)
+    const handleDescription = html => {
+        setDescription(html)
     }
 
-    const handleTranscript = value => {
-        setTranscript(value)
+    const handleTranscript = html => {
+        setTranscript(html)
     }
 
     const handleDate = ({target}) => {
@@ -160,11 +162,43 @@ const AdminForm = props => {
                         />
                         <div className="ep-wysiwyg">
                             <h2>Description</h2>
-                            <SimpleMDE onChange={handleDescription} value={description} />
+                            <ReactQuill
+                                onChange={handleDescription}
+                                defaultValue={description}
+                                modules={{
+                                    toolbar: {
+                                        container: [
+                                            [{ header: '1' }, { header: '2' }, { header: [3, 4, 5, 6] }, { font: [] }],
+                                            [{ size: [] }],
+                                            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                                            [{ list: 'ordered' }, { list: 'bullet' }],
+                                            ['link'],
+                                            ['clean'],
+                                            ['code-block']
+                                        ],
+                                    }
+                                }}
+                            />
                         </div>
                         <div className="ep-wysiwyg">
                             <h2>Transcript</h2>
-                            <SimpleMDE onChange={handleTranscript} value={transcript} />
+                            <ReactQuill
+                                onChange={handleTranscript}
+                                defaultValue={transcript}
+                                modules={{
+                                    toolbar: {
+                                        container: [
+                                            [{ header: '1' }, { header: '2' }, { header: [3, 4, 5, 6] }, { font: [] }],
+                                            [{ size: [] }],
+                                            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                                            [{ list: 'ordered' }, { list: 'bullet' }],
+                                            ['link'],
+                                            ['clean'],
+                                            ['code-block']
+                                        ],
+                                    }
+                                }}
+                            />
                         </div>
                         <TextField
                             label="Metadescription"

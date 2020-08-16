@@ -1,7 +1,7 @@
 export const EpDesc = ({description, transcript}) => (
     <div className="ep-desc">
         <h3 className="section-heading">In This Episode</h3>
-        <div dangerouslySetInnerHTML={{ __html: description }} />
+            <div dangerouslySetInnerHTML={{ __html: description }} />
         {
             transcript &&
             <div className="transcript">
