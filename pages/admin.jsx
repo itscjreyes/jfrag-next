@@ -2,8 +2,21 @@ import React, { useState, useEffect } from 'react';
 import fire from '../config/fire-config';
 import AdminHeader from '../Components/Admin/Header/admin-header.component';
 import EpisodeItem from '../Components/Admin/Episode-Item/episode-item.component';
+import Button from '@material-ui/core/Button';
+import Link from 'next/link';
 
-const Admin = () => {   
+const Admin = () => {  
+    const [loggedIn, setLoggedIn] = useState(false);  
+    
+    fire.auth() 
+    .onAuthStateChanged((user) => { 
+      if (user) { 
+        setLoggedIn(true) 
+      } else { 
+        setLoggedIn(false) 
+      } 
+    })
+    
     const [eps, setEps] = useState([]);
     useEffect(() => { 
         fire.firestore() 
@@ -19,26 +32,46 @@ const Admin = () => {
 
     const orderedEps = eps.sort((a, b) => parseFloat(b.date.substring(0,10).replace(/-/g,'')) - parseFloat(a.date.substring(0,10).replace(/-/g,'')));
 
+    const handleLogout = () => { 
+        fire.auth() 
+          .signOut(); 
+    }
+    
     return ( 
-      <div>
-        <AdminHeader />
-        <div style={{ marginTop: '130px' }}>
-        {
-            orderedEps.map(ep => (
-                <EpisodeItem
-                    key={ep.id}
-                    title={ep.title}
-                    date={ep.date}
-                    description={ep.description}
-                    meta={ep.meta}
-                    embed={ep.embed}
-                    transcript={ep.transcript}
-                    id={ep.id}
-                />
-            ))
-        }
-        </div>
-      </div> 
+        <div>
+            {
+                !loggedIn ?
+                <>
+                    <div className="send-to-login">
+                        <div className="container">
+                            <h1>Admin: Episodes</h1>
+                            <p>If you are not redirected, please login to continue.</p>
+                            <Link href="/login"><Button variant="contained" color="primary">Login to Admin Panel</Button></Link>
+                        </div>
+                    </div>
+                </>
+                :
+                <>
+                    <AdminHeader />
+                    <div style={{ marginTop: '130px' }}>
+                    {
+                        orderedEps.map(ep => (
+                            <EpisodeItem
+                                key={ep.id}
+                                title={ep.title}
+                                date={ep.date}
+                                description={ep.description}
+                                meta={ep.meta}
+                                embed={ep.embed}
+                                transcript={ep.transcript}
+                                id={ep.id}
+                            />
+                        ))
+                    }
+                    </div>
+                </>
+            }
+        </div> 
     ) 
   }
   

@@ -32,6 +32,7 @@ const Episode = (props) => {
               />
           </div>
       </div>
+      <Back pos="bottom" />
       <Footer />
     </div>
   )
