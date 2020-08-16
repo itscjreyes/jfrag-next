@@ -11,17 +11,16 @@ import Typography from '@material-ui/core/Typography';
 import HomeIcon from '@material-ui/icons/Home';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import TextField from '@material-ui/core/TextField';
+import SimpleMDE from 'react-simplemde-editor';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     appBar: {
-      position: 'relative',
+      position: 'fixed',
     },
     title: {
       textAlign: 'center',
       flex: 1,
-    },
-    icon: {
-        color: 'white'
     }
 }));
   
@@ -34,7 +33,11 @@ const AdminForm = () => {
     const [open, setOpen] = useState(false);
     const [title, setTitle] = useState('');
     const [slug, setSlug] = useState('');
-    const [content, setContent] = useState('');  
+    const [description, setDescription] = useState('');  
+    const [date, setDate] = useState('');  
+    const [embed, setEmbed] = useState('');  
+    const [transcript, setTranscript] = useState('');  
+    const [meta, setMeta] = useState('');  
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -47,8 +50,28 @@ const AdminForm = () => {
     const handleTitle = ({target}) => {
         const slugKebab = target.value.toLowerCase().replace(/[!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g, '').replace(/ /g, '-');
 
-        setTitle(target.value)
-        setSlug(slugKebab)
+        setTitle(target.value);
+        setSlug(slugKebab);
+    }
+
+    const handleDescription = value => {
+        setDescription(value)
+    }
+
+    const handleTranscript = value => {
+        setTranscript(value)
+    }
+
+    const handleDate = ({target}) => {
+        setDate(target.value)
+    }
+
+    const handleEmbed = ({target}) => {
+        setEmbed(target.value)
+    }
+
+    const handleMeta = ({target}) => {
+        setMeta(target.value)
     }
     
     const handleSubmit = (event) => { 
@@ -58,30 +81,31 @@ const AdminForm = () => {
         .doc(slug)
         .set({ 
             title: title,
-            content: content, 
+            description: description,
+            date: date,
+            embed: embed,
+            transcript: transcript,
+            meta: meta,
             slug: slug
-        });  
-      console.log({
-        "title": title, 
-        "content": content,
-        "slug": slug
-      });    
+        });   
       setTitle('');
-      setContent('');
+      setDescription('');
+      setDate('');
+      setEmbed('');
+      setTranscript('');
+      setMeta('');
       handleClose();
     } 
 
     return ( 
-        <div className="admin-form">
-            <AppBar className={classes.appBar}>
-            <Toolbar>
-                <Link href="/"><a className='home-btn'><HomeIcon/></a></Link>
-                <Typography variant="h6" className={classes.title}>
-                Admin: Podcast Episodes
-                </Typography>
-                <Button variant="contained" onClick={handleClickOpen}>Add Episode</Button>
-            </Toolbar>
-            </AppBar>
+        <div>
+            <div className="admin-header">
+                <div className="container">
+                    <Link href="/"><Button variant="outlined">Back to Site</Button></Link>
+                    <h1>Admin: Podcast Episodes</h1>
+                    <Button variant="contained" color="primary" onClick={handleClickOpen}>Add Episode</Button>
+                </div>
+            </div>
             <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
             <AppBar className={classes.appBar}>
             <Toolbar>
@@ -96,17 +120,48 @@ const AdminForm = () => {
                 </Button>
             </Toolbar>
             </AppBar>
-                <form> 
-                    <div> 
-                        Title<br /> 
-                        <input type="text" value={title}  
-                        onChange={handleTitle} /> 
+                <form className="admin-form">
+                    <div className="container">
+                        <TextField
+                            label="Title"
+                            variant="outlined"
+                            name="title"
+                            placeholder="Title"
+                            onChange={handleTitle}
+                            className="title"
+                        />
+                        <TextField
+                            variant="outlined"
+                            type="date"
+                            name="date"
+                            className="date"
+                            onChange={handleDate}
+                        />
+                        <TextField
+                            label="Libsyn Embed Code"
+                            variant="outlined"
+                            type="embed"
+                            name="embed"
+                            onChange={handleEmbed}
+                            fullWidth
+                        />
+                        <div className="ep-wysiwyg">
+                            <h2>Description</h2>
+                            <SimpleMDE onChange={handleDescription} />
+                        </div>
+                        <div className="ep-wysiwyg">
+                            <h2>Transcript</h2>
+                            <SimpleMDE onChange={handleTranscript} />
+                        </div>
+                        <TextField
+                            label="Metadescription"
+                            variant="outlined"
+                            type="meta"
+                            name="meta"
+                            onChange={handleMeta}
+                            fullWidth
+                        />
                     </div> 
-                    <div> 
-                        Content<br /> 
-                        <textarea value={content}  
-                        onChange={({target}) => setContent(target.value)} /> 
-                    </div>
                 </form>
             </Dialog>
         </div>
