@@ -24,7 +24,7 @@ const Episode = (props) => {
       <div className="content-wrapper">
           <div className="container">
               <EpMedia 
-                  embed='embed'
+                  embed={props.embed}
               />
               <EpDesc
                   description={props.description}
@@ -49,6 +49,7 @@ export const getServerSideProps = async ({ query }) => {
         content['meta'] = result.data().meta; 
         content['transcript'] = result.data().transcript; 
         content['date'] = result.data().date; 
+        content['embed'] = result.data().embed; 
       });return { 
       props: { 
         title: content.title, 
@@ -56,6 +57,7 @@ export const getServerSideProps = async ({ query }) => {
         meta: content.meta, 
         transcript: content.transcript, 
         date: content.date, 
+        embed: content.embed, 
       } 
     } 
 } 
