@@ -5,6 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import AdminForm from '../Form/admin-form.component';
 
 const EpisodeItem = props => {
     const [open, setOpen] = React.useState(false);
@@ -32,6 +33,17 @@ const EpisodeItem = props => {
                 <div className="content-wrapper">
                     <p>{props.title}</p>
                     <div className="actions">
+                        <AdminForm
+                            text="Edit"
+                            title={props.title}
+                            slug={props.id}
+                            description={props.description}
+                            date={props.date}
+                            meta={props.meta}
+                            embed={props.embed}
+                            transcript={props.transcript}
+                            type="update"
+                        />
                         <Button onClick={handleClickOpen}>Delete</Button>
                     </div>
                 </div>

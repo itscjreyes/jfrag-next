@@ -22,7 +22,7 @@ class Instagram extends Component {
       )[1]
       .slice(0,-1)
 
-    const convertedJsonObj = JSON.parse(instaObj)
+    const convertedJsonObj = JSON.parse(instaObj);
     const mediaArr = convertedJsonObj.entry_data.ProfilePage[0].graphql.user.edge_owner_to_timeline_media.edges
 
     mediaArr.map(el => {

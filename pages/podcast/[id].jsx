@@ -13,13 +13,13 @@ const Episode = (props) => {
       <Head>
           <title>{props.title} | The Working Capital Real Estate Podcast | Jesse Fragale</title>
           <link rel="icon" href="/Favicon.png" />
-          <meta name="description" content={props.content}></meta>
+          <meta name="description" content={props.meta}></meta>
       </Head>
       <Header/>
       <Back pos="top" />
       <Title 
           name={props.title}
-          date='2020-01-01'
+          date={props.date}
       />
       <div className="content-wrapper">
           <div className="container">
@@ -27,8 +27,8 @@ const Episode = (props) => {
                   embed='embed'
               />
               <EpDesc
-                  description={props.content}
-                  transcript='transcript'
+                  description={props.description}
+                  transcript={props.transcript}
               />
           </div>
       </div>
@@ -45,11 +45,17 @@ export const getServerSideProps = async ({ query }) => {
       .get() 
       .then(result => { 
         content['title'] = result.data().title; 
-        content['content'] = result.data().content; 
+        content['description'] = result.data().description; 
+        content['meta'] = result.data().meta; 
+        content['transcript'] = result.data().transcript; 
+        content['date'] = result.data().date; 
       });return { 
       props: { 
         title: content.title, 
-        content: content.content, 
+        description: content.description, 
+        meta: content.meta, 
+        transcript: content.transcript, 
+        date: content.date, 
       } 
     } 
 } 

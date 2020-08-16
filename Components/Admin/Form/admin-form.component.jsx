@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import fire from '../../../config/fire-config';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -27,16 +26,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const AdminForm = () => { 
+const AdminForm = props => { 
     const classes = useStyles();
     const [open, setOpen] = useState(false);
-    const [title, setTitle] = useState('');
-    const [slug, setSlug] = useState('');
-    const [description, setDescription] = useState('');  
-    const [date, setDate] = useState('');  
-    const [embed, setEmbed] = useState('');  
-    const [transcript, setTranscript] = useState('');  
-    const [meta, setMeta] = useState('');  
+    const [title, setTitle] = useState(props.title);
+    const [slug, setSlug] = useState(props.slug);
+    const [description, setDescription] = useState(props.description);  
+    const [date, setDate] = useState(props.date);  
+    const [embed, setEmbed] = useState(props.embed);  
+    const [transcript, setTranscript] = useState(props.transcript);  
+    const [meta, setMeta] = useState(props.meta);  
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -47,10 +46,12 @@ const AdminForm = () => {
     };
 
     const handleTitle = ({target}) => {
-        const slugKebab = target.value.toLowerCase().replace(/[!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g, '').replace(/ /g, '-');
-
         setTitle(target.value);
-        setSlug(slugKebab);
+        const slugKebab = target.value.toLowerCase().replace(/[!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/g, '').replace(/ /g, '-');
+        
+        if (props.type !== "update"){
+            setSlug(slugKebab);
+        }
     }
 
     const handleDescription = value => {
@@ -86,25 +87,35 @@ const AdminForm = () => {
             transcript: transcript,
             meta: meta,
             slug: slug
-        });   
-      setTitle('');
-      setDescription('');
-      setDate('');
-      setEmbed('');
-      setTranscript('');
-      setMeta('');
-      handleClose();
+        });
+
+        console.log(title, slug, description, date, embed, transcript, meta)
+        
+        if (props.type == "update") {
+            setTitle(title);
+            setDescription(description);
+            setDate(date);
+            setEmbed(embed);
+            setTranscript(transcript);
+            setMeta(meta);
+            setSlug(slug);
+        } else {
+            setTitle('');
+            setDescription('');
+            setDate('');
+            setEmbed('');
+            setTranscript('');
+            setMeta('');
+            setSlug('');
+        }
+
+        handleClose();
     } 
 
     return ( 
         <div>
-            <div className="admin-header">
-                <div className="container">
-                    <Link href="/"><Button variant="outlined">Back to Site</Button></Link>
-                    <h1>Admin: Podcast Episodes</h1>
-                    <Button variant="contained" color="primary" onClick={handleClickOpen}>Add Episode</Button>
-                </div>
-            </div>
+            <Button variant="contained" color="primary" onClick={handleClickOpen}>{props.text}</Button>
+
             <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
             <AppBar className={classes.appBar}>
             <Toolbar>
@@ -128,6 +139,7 @@ const AdminForm = () => {
                             placeholder="Title"
                             onChange={handleTitle}
                             className="title"
+                            defaultValue={title}
                         />
                         <TextField
                             variant="outlined"
@@ -135,6 +147,7 @@ const AdminForm = () => {
                             name="date"
                             className="date"
                             onChange={handleDate}
+                            defaultValue={date}
                         />
                         <TextField
                             label="Libsyn Embed Code"
@@ -142,15 +155,16 @@ const AdminForm = () => {
                             type="embed"
                             name="embed"
                             onChange={handleEmbed}
+                            defaultValue={embed}
                             fullWidth
                         />
                         <div className="ep-wysiwyg">
                             <h2>Description</h2>
-                            <SimpleMDE onChange={handleDescription} />
+                            <SimpleMDE onChange={handleDescription} value={description} />
                         </div>
                         <div className="ep-wysiwyg">
                             <h2>Transcript</h2>
-                            <SimpleMDE onChange={handleTranscript} />
+                            <SimpleMDE onChange={handleTranscript} value={transcript} />
                         </div>
                         <TextField
                             label="Metadescription"
@@ -158,6 +172,7 @@ const AdminForm = () => {
                             type="meta"
                             name="meta"
                             onChange={handleMeta}
+                            defaultValue={meta}
                             fullWidth
                         />
                     </div> 
