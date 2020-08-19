@@ -28,6 +28,11 @@ class Home extends Component {
       <div>
         <Head>
           <title>Jesse Fragale | Real Estate Investor</title>
+          <meta name="description" content="Jesse Fragale is a commercial real estate broker and investor. With his YouTube channel, articles, and podcast, he provides simple and straightforward real estate advice and education no matter what investing experience you have."></meta>
+          <meta property="og:url" content="https://jessefragale.com"></meta>
+          <meta property="og:title" content="Jesse Fragale | Real Estate Investor"></meta>
+          <meta property="og:description" content="Jesse Fragale is a commercial real estate broker and investor. With his YouTube channel, articles, and podcast, he provides simple and straightforward real estate advice and education no matter what investing experience you have."></meta>
+          <meta property="og:image" content="https://cdn.buttercms.com/n7F5ISRpSR2Q0vJfpuLW"></meta>
           <link rel="icon" href="/Favicon.png" />
         </Head>
 

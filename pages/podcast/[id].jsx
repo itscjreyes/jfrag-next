@@ -14,6 +14,10 @@ const Episode = (props) => {
           <title>{props.title} | The Working Capital Real Estate Podcast | Jesse Fragale</title>
           <link rel="icon" href="/Favicon.png" />
           <meta name="description" content={props.meta}></meta>
+          <meta property="og:url" content={`https://jessefragale.com/podcast/${props.slug}`}></meta>
+          <meta property="og:title" content={`${props.title} | The Working Capital Real Estate Podcast | Jesse Fragale`}></meta>
+          <meta property="og:description" content={props.meta}></meta>
+          <meta property="og:image" content="https://cdn.buttercms.com/wpW3T6jTcKrLRCC0lsg3"></meta>
       </Head>
       <Header/>
       <Back pos="top" />
@@ -51,6 +55,7 @@ export const getServerSideProps = async ({ query }) => {
         content['transcript'] = result.data().transcript; 
         content['date'] = result.data().date; 
         content['embed'] = result.data().embed; 
+        content['slug'] = result.data().slug; 
       });return { 
       props: { 
         title: content.title, 
@@ -59,6 +64,7 @@ export const getServerSideProps = async ({ query }) => {
         transcript: content.transcript, 
         date: content.date, 
         embed: content.embed, 
+        slug: content.slug, 
       } 
     } 
 } 
