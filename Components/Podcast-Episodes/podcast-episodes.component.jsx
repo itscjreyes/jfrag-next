@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { EpisodeCard } from "./episode-card.component";
+import { Loader } from '../Loader/loader.component';
 
-function PodcastEpisodes({eps}) {
+function PodcastEpisodes({eps, loading}) {
     const [size, setSize] = useState(5);
 
     const orderedEps = eps.sort((a, b) => parseFloat(b.date.substring(0,10).replace(/-/g,'')) - parseFloat(a.date.substring(0,10).replace(/-/g,'')));
@@ -11,6 +12,10 @@ function PodcastEpisodes({eps}) {
             <div className="container">
                 <h2>Episodes</h2>
                 <div className="episodes-group">
+                {
+                    loading &&
+                    <Loader />
+                }
                 {
                     orderedEps.slice(0, size).map((ep, i) => (
                         <EpisodeCard
