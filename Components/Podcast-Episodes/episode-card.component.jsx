@@ -32,7 +32,7 @@ export const EpisodeCard = ({ep}) => {
                 </div>
                 <div className="ep-content">
                     <h3 className="ep-title"><span className="play-icon"><img src="/play.svg" aria-hidden="true"/></span>{ep.title}</h3>
-                    <p>{desc}</p>
+                    <p>{desc}...</p>
                 </div>
             </a>
         </Link>

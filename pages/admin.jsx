@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 import fire from '../config/fire-config';
 import AdminHeader from '../Components/Admin/Header/admin-header.component';
 import EpisodeItem from '../Components/Admin/Episode-Item/episode-item.component';
@@ -31,14 +32,13 @@ const Admin = () => {
       }, []);
 
     const orderedEps = eps.sort((a, b) => parseFloat(b.date.substring(0,10).replace(/-/g,'')) - parseFloat(a.date.substring(0,10).replace(/-/g,'')));
-
-    const handleLogout = () => { 
-        fire.auth() 
-          .signOut(); 
-    }
     
     return ( 
         <div>
+          <Head>
+          <title>ADMIN PANEL | Working Capital Real Estate Podcast</title>
+          <link rel="icon" href="/Favicon.png" />
+        </Head>
             {
                 !loggedIn ?
                 <>
