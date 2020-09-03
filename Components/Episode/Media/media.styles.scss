@@ -2,6 +2,15 @@
     position: sticky;
     top: 100px;
     width: 35%;
+
+    .badges-wrapper {
+        justify-content: flex-start;
+        margin-top: 20px;
+
+        a {
+            height: 30px;
+        }
+    }
 }
 
 @media screen and (max-width: 767px) {

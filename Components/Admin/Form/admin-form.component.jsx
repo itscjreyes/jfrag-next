@@ -37,6 +37,27 @@ const AdminForm = props => {
     const [embed, setEmbed] = useState(props.embed);  
     const [transcript, setTranscript] = useState(props.transcript);  
     const [meta, setMeta] = useState(props.meta);
+    const [apple, setApple] = useState(props.apple);
+    const [google, setGoogle] = useState(props.google);
+    const [spotify, setSpotify] = useState(props.spotify);
+    const [stitcher, setStitcher] = useState(props.stitcher);
+
+    if (apple == undefined) {
+        setApple('')
+    }
+
+    if (google == undefined) {
+        setGoogle('')
+    }
+
+    if (spotify == undefined) {
+        setSpotify('')
+    }
+
+    if (stitcher == undefined) {
+        setStitcher('')
+    }
+
     const [value, setValue] = useState('');
 
     const handleClickOpen = () => {
@@ -75,6 +96,22 @@ const AdminForm = props => {
     const handleMeta = ({target}) => {
         setMeta(target.value)
     }
+
+    const handleApple = ({target}) => {
+        setApple(target.value)
+    }
+
+    const handleGoogle = ({target}) => {
+        setGoogle(target.value)
+    }
+
+    const handleSpotify = ({target}) => {
+        setSpotify(target.value)
+    }
+
+    const handleStitcher = ({target}) => {
+        setStitcher(target.value)
+    }
     
     const handleSubmit = (event) => { 
       event.preventDefault();  
@@ -88,10 +125,12 @@ const AdminForm = props => {
             embed: embed,
             transcript: transcript,
             meta: meta,
-            slug: slug
+            slug: slug,
+            apple: apple,
+            google: google,
+            spotify: spotify,
+            stitcher: stitcher
         });
-
-        console.log(title, slug, description, date, embed, transcript, meta)
         
         if (props.type == "update") {
             setTitle(title);
@@ -101,6 +140,10 @@ const AdminForm = props => {
             setTranscript(transcript);
             setMeta(meta);
             setSlug(slug);
+            setApple(apple);
+            setGoogle(google);
+            setSpotify(spotify);
+            setStitcher(stitcher);
         } else {
             setTitle('');
             setDescription('');
@@ -109,6 +152,10 @@ const AdminForm = props => {
             setTranscript('');
             setMeta('');
             setSlug('');
+            setApple('');
+            setGoogle('');
+            setSpotify('');
+            setStitcher('');
         }
 
         handleClose();
@@ -208,6 +255,44 @@ const AdminForm = props => {
                             onChange={handleMeta}
                             defaultValue={meta}
                             fullWidth
+                        />
+
+                        <h3 className="ep-links">Episode Links</h3>
+                        <TextField
+                            label="Apple"
+                            variant="outlined"
+                            type="apple"
+                            name="apple"
+                            onChange={handleApple}
+                            defaultValue={apple}
+                            className="link-out"
+                        />
+                        <TextField
+                            label="Google"
+                            variant="outlined"
+                            type="google"
+                            name="google"
+                            onChange={handleGoogle}
+                            defaultValue={google}
+                            className="link-out"
+                        />
+                        <TextField
+                            label="Spotify"
+                            variant="outlined"
+                            type="spotify"
+                            name="spotify"
+                            onChange={handleSpotify}
+                            defaultValue={spotify}
+                            className="link-out"
+                        />
+                        <TextField
+                            label="Stitcher"
+                            variant="outlined"
+                            type="stitcher"
+                            name="stitcher"
+                            onChange={handleStitcher}
+                            defaultValue={stitcher}
+                            className="link-out"
                         />
                     </div> 
                 </form>

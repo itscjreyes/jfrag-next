@@ -36,6 +36,22 @@
             font-size: 16px;
         }
     }
+
+    h3.ep-links {
+        width: 100%;
+        font-family: $font-body;
+        font-size: 18px;
+        background: $grey;
+        color: white;
+        padding: 5px 15px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        margin: 40px 0 10px;
+    }
+
+    .link-out {
+        width: 24%;
+    }
 }
 
 .CodeMirror .cm-spell-error:not(.cm-url):not(.cm-comment):not(.cm-tag):not(.cm-word) {
@@ -49,6 +65,10 @@
             .date {
                 width: 100%;
             }
+        }
+
+        .link-out {
+            width: 100%;
         }
     }
 }

@@ -65,6 +65,10 @@ const Admin = () => {
                                 embed={ep.embed}
                                 transcript={ep.transcript}
                                 id={ep.id}
+                                apple={ep.apple}
+                                google={ep.google}
+                                spotify={ep.spotify}
+                                stitcher={ep.stitcher}
                             />
                         ))
                     }

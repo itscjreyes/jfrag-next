@@ -42,6 +42,10 @@ const EpisodeItem = props => {
                             meta={props.meta}
                             embed={props.embed}
                             transcript={props.transcript}
+                            apple={props.apple}
+                            google={props.google}
+                            spotify={props.spotify}
+                            stitcher={props.stitcher}
                             type="update"
                         />
                         <Button onClick={handleClickOpen}>Delete</Button>
