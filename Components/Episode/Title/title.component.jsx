@@ -13,7 +13,7 @@ function formatDate(date){
 export const Title = ({name, date}) => (
     <div className="title">
         <div className="container">
-            <h1>The Working Capital Real Estate Podcast</h1>
+            <h1>Working Capital The Real Estate Podcast</h1>
             <h2>{name}</h2>
             <p>{formatDate(date)}</p>
         </div>

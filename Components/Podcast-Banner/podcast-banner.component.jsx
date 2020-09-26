@@ -9,7 +9,7 @@ function PodcastBanner(){
                     <img src="/working-capital-real-estate-podcast.png" alt="The Working Capital Real Estate Podcast" className="lazyload no-transform"/>
                 </div>
                 <div className="content-wrapper">
-                    <h1><span className="lg">The Working Capital</span> <span className="red">Real Estate</span> Podcast</h1>
+                    <h1><span className="lg">Working Capital</span> <span className="red">The Real Estate Podcast</span></h1>
                     <PodcastBadges
                         apple="https://podcasts.apple.com/nl/podcast/the-working-capital-real-estate-podcast/id1505750263?l=en"
                         google="https://play.google.com/music/m/Isou7vpx5mcx62bimpu6t7m73uy?t=The_Working_Capital_Real_Estate_Podcast"
