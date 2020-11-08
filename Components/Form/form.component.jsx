@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import emailjs from 'emailjs-com';
+import Recaptcha from 'react-recaptcha';
 
 class Form extends Component {
   constructor(props) {
@@ -11,34 +13,51 @@ class Form extends Component {
         email: '',
         message: ''
       },
-      submitted: false,
+      recaptchaLoad: false,
+      isVerified: false,
+      submitted: false
     }
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     const { formData } = this.state;
     formData[event.target.name] = event.target.value;
     this.setState({ formData });
   }
 
-  handleSubmit = () => {
-    this.setState({ submitted: true }, () => {
-      setTimeout(() => this.setState({ submitted: false }), 5000);
-    });
-
-    const templateId = 'template_R6HHxYQp';
-
-    this.sendFeedback(templateId, {
-      from_name: this.state.formData.name,
-      from_email: this.state.formData.email,
-      message_html: this.state.formData.message
-    })
+  recaptchaLoaded = () => {
+    this.setState({ recaptchaLoad: true });
+  }
+  
+  verifiedRecaptcha = response => {
+    if (response) {
+      this.setState({ isVerified: true });
+    }
   }
 
-  sendFeedback(templateId, variables) {
-    window.emailjs.send(
+  handleSubmit = () => {
+    const { recaptchaLoad, isVerified } = this.state;
+
+    if (recaptchaLoad && isVerified) {
+      this.setState({ submitted: true }, () => {
+        setTimeout(() => this.setState({ submitted: false }), 5000);
+      });
+  
+      const templateId = 'template_R6HHxYQp';
+      const userId = 'user_8qCZgPE9xxrGQml7wSZJ0';
+  
+      this.sendFeedback(templateId, {
+        from_name: this.state.formData.name,
+        from_email: this.state.formData.email,
+        message_html: this.state.formData.message
+      }, userId)
+    }
+  }
+
+  sendFeedback(templateId, variables, userId) {
+    emailjs.send(
       'gmail', templateId,
-      variables
+      variables, userId
     ).then(res => {
       console.log('Email successfully sent!')
       const formFields = document.querySelector('.form-content');
@@ -49,7 +68,7 @@ class Form extends Component {
   }
 
   render() {
-    const { formData, submitted } = this.state;
+    const { formData, submitted, isVerified} = this.state;
     return (
       <ValidatorForm
         ref="form"
@@ -82,18 +101,34 @@ class Form extends Component {
             validators={['required']}
             errorMessages={['This field is required']}
           />
-          <Button
-            className="custom-submit"
-            color="primary"
-            variant="contained"
-            type="submit"
-            disabled={submitted}
-          >
-            {
-              (submitted && 'Your form is submitted!')
-              || (!submitted && 'Submit')
-            }
-          </Button>
+          <Recaptcha
+            sitekey="6LcDoeAZAAAAAFda52pqnZ9-auAH6SmV_bZ5Lx3q"
+            render="explicit"
+              onloadCallback={this.recaptchaLoaded}
+              verifyCallback={this.verifiedRecaptcha}
+          />
+          { isVerified ?
+            <Button
+              className="custom-submit"
+              color="primary"
+              variant="contained"
+              type="submit"
+              disabled={submitted}
+            >
+              {
+                (submitted && 'Your form is submitted!')
+                || (!submitted && 'Submit')
+              }
+            </Button>
+            :
+            <Button
+              className="custom-submit"
+              color="primary"
+              variant="contained"
+              type="submit"
+              disabled
+            >Submit</Button>
+          }
         </div>
       </ValidatorForm>
     )
