@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import emailjs from 'emailjs-com';
-import Recaptcha from 'react-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 class Form extends Component {
   constructor(props) {
@@ -13,9 +13,8 @@ class Form extends Component {
         email: '',
         message: ''
       },
-      recaptchaLoad: false,
-      isVerified: false,
-      submitted: false
+      submitted: false,
+      verified: false
     }
   }
 
@@ -25,20 +24,12 @@ class Form extends Component {
     this.setState({ formData });
   }
 
-  recaptchaLoaded = () => {
-    this.setState({ recaptchaLoad: true });
-  }
-  
-  verifiedRecaptcha = response => {
-    if (response) {
-      this.setState({ isVerified: true });
-    }
+  handleRecaptcha = () => {
+    this.setState({verified: true})
   }
 
   handleSubmit = () => {
-    const { recaptchaLoad, isVerified } = this.state;
-
-    if (recaptchaLoad && isVerified) {
+    if (this.state.verified) {
       this.setState({ submitted: true }, () => {
         setTimeout(() => this.setState({ submitted: false }), 5000);
       });
@@ -68,7 +59,8 @@ class Form extends Component {
   }
 
   render() {
-    const { formData, submitted, isVerified} = this.state;
+    console.log(`Verified: ${this.state.verified}`);
+    const { formData, submitted, verified} = this.state;
     return (
       <ValidatorForm
         ref="form"
@@ -101,13 +93,12 @@ class Form extends Component {
             validators={['required']}
             errorMessages={['This field is required']}
           />
-          <Recaptcha
+          <ReCAPTCHA
             sitekey="6LcDoeAZAAAAAFda52pqnZ9-auAH6SmV_bZ5Lx3q"
-            render="explicit"
-              onloadCallback={this.recaptchaLoaded}
-              verifyCallback={this.verifiedRecaptcha}
+            onChange={this.handleRecaptcha}
           />
-          { isVerified ?
+          {
+            verified ? 
             <Button
               className="custom-submit"
               color="primary"
