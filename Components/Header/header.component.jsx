@@ -55,6 +55,7 @@ class Header extends Component {
               <li className="menu-item"><Link href="/#media"><a className="menu-button">Media</a></Link></li>
               <li className="menu-item"><Link href="/podcast"><a className="menu-button">Podcast</a></Link></li>
               <li className="menu-item"><Link href="/#contact"><a className="menu-button">Contact</a></Link></li>
+              <li className="menu-item"><a href="https://theworkingcapitalpodcast.com/" className="menu-button cta">Download RE Model</a></li>
             </ul>
           </nav>
           <button className="mobile-trigger" onClick={this.mobileTrigger}>

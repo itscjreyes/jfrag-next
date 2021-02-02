@@ -13,7 +13,7 @@ class Instagram extends Component {
   
   async componentDidMount() {
     let data = []
-    const url = "https://www.instagram.com/jessefragale/"
+    const url = "https://www.instagram.com/maclol"
     const instaSource = await axios.get(url)
 
     const instaObj = instaSource.data
@@ -23,6 +23,7 @@ class Instagram extends Component {
       .slice(0,-1)
 
     const convertedJsonObj = JSON.parse(instaObj);
+    console.log(convertedJsonObj)
     const mediaArr = convertedJsonObj.entry_data.ProfilePage[0].graphql.user.edge_owner_to_timeline_media.edges
 
     mediaArr.map(el => {

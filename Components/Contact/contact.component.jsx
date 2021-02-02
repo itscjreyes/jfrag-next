@@ -16,7 +16,7 @@ function Contact() {
             <Social />
             <Form />
           </div>
-          <Instagram />
+          {/* <Instagram /> */}
         </div>
       </div>
     </div>
