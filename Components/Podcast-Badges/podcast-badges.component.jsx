@@ -8,7 +8,7 @@ export const PodcastBadges = props => {
 
             {
                 props.google &&
-                <a href={props.google} target="_blank" rel="noopener noreferrer" title="Google Play Music"><img src="/google-play-music-badge.png" alt="Google Play Music"/></a>
+                <a href={props.google} target="_blank" rel="noopener noreferrer" title="Google Podcasts"><img src="/google-podcasts-badge.png" alt="Google Podcasts"/></a>
             }
             
             {
